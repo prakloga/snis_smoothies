@@ -3,6 +3,7 @@
 # but when a warehouse is associated with a SiS app, it runs for a minimum of 15 minutes by default. 
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie!:cup_with_straw:")
@@ -27,6 +28,11 @@ ingredients_list = st.multiselect(
     max_selections=5 # We found the max_selections does what we need it to do. 
                      # But it's also a little wonky because it seems to give you the alert when you choose your fifth item instead of waiting until you try to add a 6th.
 )
+
+# New section to display smoothiefroot nutrition information
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
+
 # We can use the st.write() and st.text() methods to take a closer look at what is contained in our ingredients LIST. 
 # Cleaning Up Empty Brackets
 # actually means...if ingredients_list is not null: then do everything below this line that is indented. 
