@@ -45,7 +45,7 @@ if ingredients_list:
     # Use FOR loop to convert LIST to String
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' ' # Add space after each fruit name
-        st.subheader(fruit_chosen + 'Nutrition Information')
+        st.subheader(fruit_chosen + ' Nutrition Information')
         #smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
