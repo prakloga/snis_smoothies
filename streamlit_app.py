@@ -30,10 +30,10 @@ ingredients_list = st.multiselect(
 )
 
 # New section to display smoothiefroot nutrition information
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response)
 #st.text(smoothiefroot_response.json())
-sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+#sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 # We can use the st.write() and st.text() methods to take a closer look at what is contained in our ingredients LIST. 
 # Cleaning Up Empty Brackets
@@ -45,6 +45,9 @@ if ingredients_list:
     # Use FOR loop to convert LIST to String
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' ' # Add space after each fruit name
+        smoothiefroot_response = request.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        
     # Output the string
     #st.write(ingredients_string)
 
